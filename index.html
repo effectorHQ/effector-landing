@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="effectorHQ — The next generation of proactive AI agent capabilities. Type-safe interfaces, static composition, cross-runtime compilation.">
+<meta property="og:title" content="effectorHQ — Next-Gen AI Agent Capabilities">
+<meta property="og:description" content="Type-safe interfaces. Static composition. Cross-runtime compilation. The infrastructure layer for proactive AI agents.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<title>effectorHQ — Next-Gen AI Agent Capabilities</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
+<style>
+/* ═══════════════════════════════════════════════════════
+   DESIGN TOKENS
+═══════════════════════════════════════════════════════ */
+:root {
+  --bg:          #0F0F0F;
+  --bg2:         #141414;
+  --surface:     #1A1A1A;
+  --surface2:    #222222;
+  --surface3:    #2A2A2A;
+  --border:      #2A2A2A;
+  --border2:     #333333;
+
+  --red:         #E03E3E;
+  --red-dim:     rgba(224,62,62,0.10);
+  --red-glow:    rgba(224,62,62,0.20);
+  --orange:      #F27A3A;
+  --orange-dim:  rgba(242,122,58,0.08);
+  --green:       #4ade80;
+  --green-dim:   rgba(74,222,128,0.08);
+  --amber:       #fbbf24;
+
+  --text:        #F5F0EB;
+  --text2:       #9CA3AF;
+  --text3:       #6B7280;
+
+  --radius:      12px;
+  --radius-sm:   8px;
+  --radius-xs:   6px;
+
+  --font-mono:   'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
+  --font-sans:   'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+/* ═══════════════════════════════════════════════════════
+   RESET & BASE
+═══════════════════════════════════════════════════════ */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+a { color: var(--orange); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--red); }
+
+code, pre { font-family: var(--font-mono); }
+
+/* ═══════════════════════════════════════════════════════
+   LAYOUT
+═══════════════════════════════════════════════════════ */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section {
+  padding: 100px 0;
+}
+
+/* ═══════════════════════════════════════════════════════
+   NAV
+═══════════════════════════════════════════════════════ */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  background: rgba(15,15,15,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  height: 56px;
+  display: flex;
+  align-items: center;
+}
+
+nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.nav-logo {
+  font-weight: 700;
+  font-size: 18px;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.nav-logo span { color: var(--red); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.nav-links a {
+  font-size: 14px;
+  color: var(--text2);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover { color: var(--text); }
+
+.nav-cta {
+  background: var(--red);
+  color: var(--text) !important;
+  padding: 7px 16px;
+  border-radius: var(--radius-xs);
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.2s !important;
+}
+
+.nav-cta:hover { background: #c73535 !important; color: var(--text) !important; }
+
+/* ═══════════════════════════════════════════════════════
+   HERO
+═══════════════════════════════════════════════════════ */
+.hero {
+  padding: 160px 0 100px;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(ellipse at center, rgba(224,62,62,0.08) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--red-dim);
+  border: 1px solid rgba(224,62,62,0.2);
+  border-radius: 100px;
+  padding: 6px 16px;
+  font-size: 13px;
+  color: var(--red);
+  font-weight: 500;
+  margin-bottom: 28px;
+}
+
+.hero-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  background: var(--red);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.hero h1 {
+  font-size: clamp(42px, 6vw, 72px);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+  max-width: 800px;
+}
+
+.hero h1 .gradient {
+  background: linear-gradient(135deg, var(--red) 0%, var(--orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.hero-sub {
+  font-size: 19px;
+  color: var(--text2);
+  line-height: 1.7;
+  max-width: 560px;
+  margin-bottom: 40px;
+  font-weight: 400;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.hero-install {
+  display: flex;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius-sm);
+  padding: 12px 20px;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--text);
+  gap: 12px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.hero-install:hover { border-color: var(--text3); }
+
+.hero-install .prompt { color: var(--text3); user-select: none; }
+.hero-install .cmd { color: var(--orange); }
+
+.hero-install .copy-btn {
+  background: none;
+  border: none;
+  color: var(--text3);
+  cursor: pointer;
+  padding: 2px;
+  transition: color 0.2s;
+  font-size: 14px;
+}
+
+.hero-install .copy-btn:hover { color: var(--text); }
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--red);
+  color: var(--text);
+  padding: 12px 24px;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 600;
+  transition: background 0.2s;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover { background: #c73535; color: var(--text); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--text2);
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid var(--border2);
+  transition: all 0.2s;
+  background: none;
+  cursor: pointer;
+}
+
+.btn-ghost:hover { color: var(--text); border-color: var(--text3); }
+
+.hero-stats {
+  display: flex;
+  gap: 40px;
+  margin-top: 56px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border);
+}
+
+.hero-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.hero-stat .num {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.hero-stat .label {
+  font-size: 13px;
+  color: var(--text3);
+  font-weight: 500;
+}
+
+/* ═══════════════════════════════════════════════════════
+   PROBLEM SECTION
+═══════════════════════════════════════════════════════ */
+.problem {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.section-label {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+
+.section-desc {
+  font-size: 17px;
+  color: var(--text2);
+  max-width: 600px;
+  line-height: 1.7;
+  margin-bottom: 48px;
+}
+
+.problem-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.problem-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 28px;
+}
+
+.problem-card .icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-xs);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  margin-bottom: 16px;
+  background: var(--red-dim);
+}
+
+.problem-card h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+
+.problem-card p {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════
+   SOLUTION / HOW IT WORKS
+═══════════════════════════════════════════════════════ */
+.solution .section-desc {
+  margin-bottom: 56px;
+}
+
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.step {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  padding: 48px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.step:last-child { border-bottom: none; }
+
+.step-num {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--red);
+  font-family: var(--font-mono);
+  margin-bottom: 12px;
+}
+
+.step h3 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 12px;
+}
+
+.step p {
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.7;
+}
+
+.step-code {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.step-code-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 16px;
+  background: var(--surface2);
+  border-bottom: 1px solid var(--border);
+  font-size: 12px;
+  color: var(--text3);
+  font-family: var(--font-mono);
+}
+
+.step-code-header .dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.step-code pre {
+  padding: 20px;
+  font-size: 13px;
+  line-height: 1.7;
+  overflow-x: auto;
+  color: var(--text2);
+}
+
+.step-code pre .kw { color: var(--red); }
+.step-code pre .str { color: var(--orange); }
+.step-code pre .comment { color: var(--text3); }
+.step-code pre .fn { color: #93c5fd; }
+.step-code pre .type { color: var(--green); }
+.step-code pre .bool { color: var(--amber); }
+.step-code pre .section { color: var(--text); font-weight: 600; }
+
+/* ═══════════════════════════════════════════════════════
+   CAPABILITIES GRID
+═══════════════════════════════════════════════════════ */
+.capabilities {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.cap-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.cap-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 32px;
+  transition: border-color 0.2s;
+}
+
+.cap-card:hover { border-color: var(--border2); }
+
+.cap-card .tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
+.cap-card .tag.core { background: var(--red-dim); color: var(--red); }
+.cap-card .tag.tool { background: var(--orange-dim); color: var(--orange); }
+.cap-card .tag.infra { background: var(--green-dim); color: var(--green); }
+
+.cap-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--text);
+  font-family: var(--font-mono);
+  letter-spacing: -0.01em;
+}
+
+.cap-card p {
+  font-size: 14px;
+  color: var(--text2);
+  line-height: 1.6;
+}
+
+/* ═══════════════════════════════════════════════════════
+   MCP SECTION
+═══════════════════════════════════════════════════════ */
+.mcp-section .highlight-box {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: var(--radius);
+  padding: 40px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.mcp-section .highlight-box h3 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.mcp-section .highlight-box p {
+  font-size: 15px;
+  color: var(--text2);
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.mcp-section .checklist {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.mcp-section .checklist li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: var(--text2);
+}
+
+.mcp-section .checklist li::before {
+  content: '✓';
+  color: var(--green);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.mcp-code {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text2);
+}
+
+/* ═══════════════════════════════════════════════════════
+   COMPARISON TABLE
+═══════════════════════════════════════════════════════ */
+.comparison {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.comparison table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.comparison thead th {
+  text-align: left;
+  padding: 14px 20px;
+  border-bottom: 2px solid var(--border2);
+  font-weight: 600;
+  color: var(--text);
+  font-size: 13px;
+}
+
+.comparison thead th:last-child {
+  color: var(--red);
+}
+
+.comparison tbody td {
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--border);
+  color: var(--text2);
+}
+
+.comparison tbody td:first-child {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.comparison tbody td:last-child {
+  color: var(--orange);
+  font-weight: 500;
+}
+
+.comparison tbody tr:last-child td { border-bottom: none; }
+
+.table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+/* ═══════════════════════════════════════════════════════
+   ARCHITECTURE
+═══════════════════════════════════════════════════════ */
+.arch-diagram {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 40px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 2;
+  color: var(--text2);
+  overflow-x: auto;
+  white-space: pre;
+  text-align: center;
+}
+
+.arch-diagram .layer-label {
+  color: var(--text3);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.arch-diagram .pkg {
+  color: var(--orange);
+}
+
+.arch-diagram .arrow {
+  color: var(--text3);
+}
+
+/* ═══════════════════════════════════════════════════════
+   CTA
+═══════════════════════════════════════════════════════ */
+.cta-section {
+  text-align: center;
+  padding: 120px 0;
+}
+
+.cta-section h2 {
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 16px;
+}
+
+.cta-section p {
+  font-size: 17px;
+  color: var(--text2);
+  margin-bottom: 36px;
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cta-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ═══════════════════════════════════════════════════════
+   FOOTER
+═══════════════════════════════════════════════════════ */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 40px 0;
+}
+
+footer .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+footer .left {
+  font-size: 14px;
+  color: var(--text3);
+}
+
+footer .left span { color: var(--red); font-weight: 600; }
+
+footer .links {
+  display: flex;
+  gap: 24px;
+}
+
+footer .links a {
+  font-size: 13px;
+  color: var(--text3);
+  font-weight: 500;
+}
+
+footer .links a:hover { color: var(--text2); }
+
+/* ═══════════════════════════════════════════════════════
+   RESPONSIVE
+═══════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+  section { padding: 64px 0; }
+
+  .hero { padding: 120px 0 64px; }
+  .hero-stats { gap: 24px; flex-wrap: wrap; }
+
+  .problem-grid { grid-template-columns: 1fr; }
+
+  .step { grid-template-columns: 1fr; gap: 24px; }
+  .step:nth-child(even) .step-code { order: -1; }
+
+  .cap-grid { grid-template-columns: 1fr; }
+
+  .mcp-section .highlight-box {
+    grid-template-columns: 1fr;
+    padding: 24px;
+  }
+
+  .comparison table { font-size: 12px; }
+  .comparison thead th,
+  .comparison tbody td { padding: 10px 12px; }
+
+  .nav-links a:not(.nav-cta) { display: none; }
+
+  footer .container { flex-direction: column; gap: 16px; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════
+     NAV
+═══════════════════════════════════════════════════════ -->
+<nav>
+  <div class="container">
+    <div class="nav-logo"><span>effector</span>HQ</div>
+    <div class="nav-links">
+      <a href="#how-it-works">How It Works</a>
+      <a href="#ecosystem">Ecosystem</a>
+      <a href="#for-mcp">For MCP Users</a>
+      <a href="https://github.com/effectorHQ" class="nav-cta">GitHub</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════ -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-badge">Open Source</div>
+    <h1>
+      The next generation of<br>
+      <span class="gradient">AI agent capabilities</span>
+    </h1>
+    <p class="hero-sub">
+      A typed capability layer that makes AI agent tools composable, verifiable, and portable across any runtime. No lock-in. No runtime. Just types.
+    </p>
+    <div class="hero-actions">
+      <div class="hero-install" onclick="navigator.clipboard.writeText('npx create-effector my-skill')">
+        <span class="prompt">$</span>
+        <span class="cmd">npx create-effector my-skill</span>
+        <button class="copy-btn" title="Copy">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="8" height="8" rx="1.5"/><path d="M3 11V3a1 1 0 011-1h8"/></svg>
+        </button>
+      </div>
+      <a href="https://github.com/effectorHQ" class="btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        View on GitHub
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="num">249</div>
+        <div class="label">tests passing</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">36</div>
+        <div class="label">standard types</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">9</div>
+        <div class="label">packages</div>
+      </div>
+      <div class="hero-stat">
+        <div class="num">0</div>
+        <div class="label">dependencies</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     PROBLEM
+═══════════════════════════════════════════════════════ -->
+<section class="problem" id="problem">
+  <div class="container">
+    <div class="section-label">The Problem</div>
+    <h2 class="section-title">AI tools don't compose</h2>
+    <p class="section-desc">
+      Every framework defines capabilities differently. Nothing answers: <em>"Can these two tools actually work together?"</em> until something breaks at runtime.
+    </p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="icon">&#x1f6ab;</div>
+        <h3>No type safety</h3>
+        <p>MCP tools accept and return untyped JSON. A code review tool's output might not match what a reporting tool expects as input. You won't know until it fails.</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">&#x1f512;</div>
+        <h3>Runtime lock-in</h3>
+        <p>LangChain tools only work in Python. CrewAI tools only work in CrewAI. Your capability definitions are trapped in one ecosystem.</p>
+      </div>
+      <div class="problem-card">
+        <div class="icon">&#x1f50d;</div>
+        <h3>No composition checking</h3>
+        <p>Wiring tools together is manual and error-prone. There's no way to statically verify that a pipeline of tools will actually pass compatible data.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     HOW IT WORKS
+═══════════════════════════════════════════════════════ -->
+<section class="solution" id="how-it-works">
+  <div class="container">
+    <div class="section-label">How It Works</div>
+    <h2 class="section-title">Declare. Verify. Compile. Compose.</h2>
+    <p class="section-desc">
+      Effector is a sidecar manifest. It sits next to your existing tool and adds a typed interface — without changing how your tool runs.
+    </p>
+
+    <div class="steps">
+      <!-- Step 1 -->
+      <div class="step">
+        <div>
+          <div class="step-num">01</div>
+          <h3>Declare your interface</h3>
+          <p>Define what your tool accepts, returns, and needs. Choose from 36 standard types across input, output, and context categories. Your tool keeps running exactly as before.</p>
+        </div>
+        <div class="step-code">
+          <div class="step-code-header">
+            <div class="dot" style="background:var(--red)"></div>
+            effector.toml
+          </div>
+          <pre><span class="section">[effector]</span>
+<span class="kw">name</span> = <span class="str">"code-review"</span>
+<span class="kw">version</span> = <span class="str">"0.1.0"</span>
+
+<span class="section">[effector.interface]</span>
+<span class="kw">input</span> = <span class="str">"CodeDiff"</span>
+<span class="kw">output</span> = <span class="str">"ReviewReport"</span>
+<span class="kw">context</span> = [<span class="str">"Repository"</span>]
+
+<span class="section">[effector.permissions]</span>
+<span class="kw">network</span> = <span class="bool">false</span>
+<span class="kw">subprocess</span> = <span class="bool">false</span></pre>
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step">
+        <div>
+          <div class="step-num">02</div>
+          <h3>Validate and audit</h3>
+          <p>Static analysis catches issues before deployment: malformed manifests, missing permissions, type inconsistencies, and security mismatches between declared context and permissions.</p>
+        </div>
+        <div class="step-code">
+          <div class="step-code-header">
+            <div class="dot" style="background:var(--green)"></div>
+            terminal
+          </div>
+          <pre><span class="prompt">$</span> <span class="fn">npx @effectorhq/skill-lint .</span>
+<span class="type">  ✓ SKILL.md structure valid</span>
+<span class="type">  ✓ Frontmatter complete</span>
+<span class="type">  ✓ All sections present</span>
+
+<span class="prompt">$</span> <span class="fn">npx effector-audit scan .</span>
+<span class="type">  ✓ Permissions consistent with context types</span>
+<span class="type">  ✓ No network access without declaration</span>
+<span class="type">  ✓ 0 issues found</span></pre>
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step">
+        <div>
+          <div class="step-num">03</div>
+          <h3>Compile to any runtime</h3>
+          <p>One manifest, every runtime. The compiler emits MCP tool schemas, OpenAI function calls, LangChain tool definitions, or portable JSON IR — from the same source of truth.</p>
+        </div>
+        <div class="step-code">
+          <div class="step-code-header">
+            <div class="dot" style="background:var(--orange)"></div>
+            compile.js
+          </div>
+          <pre><span class="kw">import</span> { compile } <span class="kw">from</span> <span class="str">'@effectorhq/core/compile'</span>;
+
+<span class="comment">// Same manifest → different targets</span>
+<span class="kw">const</span> mcp    = <span class="fn">compile</span>(manifest, <span class="str">'mcp'</span>);
+<span class="kw">const</span> openai = <span class="fn">compile</span>(manifest, <span class="str">'openai'</span>);
+<span class="kw">const</span> lang   = <span class="fn">compile</span>(manifest, <span class="str">'langchain'</span>);
+<span class="kw">const</span> ir     = <span class="fn">compile</span>(manifest, <span class="str">'json-ir'</span>);</pre>
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step">
+        <div>
+          <div class="step-num">04</div>
+          <h3>Compose with confidence</h3>
+          <p>The type checker verifies that tool pipelines are compatible before execution. <code>CodeDiff → ReviewReport</code> chains are validated statically. Incompatible connections are caught at build time, not runtime.</p>
+        </div>
+        <div class="step-code">
+          <div class="step-code-header">
+            <div class="dot" style="background:#93c5fd"></div>
+            compose.js
+          </div>
+          <pre><span class="kw">import</span> { isTypeCompatible } <span class="kw">from</span> <span class="str">'@effectorhq/core/types'</span>;
+
+<span class="comment">// Static verification: can these chain?</span>
+<span class="fn">isTypeCompatible</span>(<span class="str">'CodeDiff'</span>, <span class="str">'CodeDiff'</span>);
+<span class="comment">// → true ✓</span>
+
+<span class="fn">isTypeCompatible</span>(<span class="str">'CodeDiff'</span>, <span class="str">'ReviewReport'</span>);
+<span class="comment">// → false ✗ — caught before execution</span></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     ECOSYSTEM
+═══════════════════════════════════════════════════════ -->
+<section class="capabilities" id="ecosystem">
+  <div class="container">
+    <div class="section-label">Ecosystem</div>
+    <h2 class="section-title">Everything you need. Nothing you don't.</h2>
+    <p class="section-desc">
+      9 focused packages, zero external dependencies, all using Node.js built-ins only.
+    </p>
+    <div class="cap-grid">
+      <div class="cap-card">
+        <div class="tag core">Core</div>
+        <h3>@effectorhq/core</h3>
+        <p>Shared kernel — TOML parser, SKILL.md parser, type checker, schema validator, compiler. The single source of truth.</p>
+      </div>
+      <div class="cap-card">
+        <div class="tag core">Core</div>
+        <h3>effector-types</h3>
+        <p>36 standard types across input, output, and context categories. The type catalog that makes discovery and composition possible.</p>
+      </div>
+      <div class="cap-card">
+        <div class="tag tool">Tool</div>
+        <h3>@effectorhq/skill-lint</h3>
+        <p>Validates SKILL.md structure, frontmatter completeness, and section coverage. Catches manifest issues before they reach production.</p>
+      </div>
+      <div class="cap-card">
+        <div class="tag tool">Tool</div>
+        <h3>effector-audit</h3>
+        <p>Security scanner for capability manifests. Detects permission mismatches, undeclared network access, and context-permission inconsistencies.</p>
+      </div>
+      <div class="cap-card">
+        <div class="tag tool">Tool</div>
+        <h3>@effectorhq/skill-mcp</h3>
+        <p>Cross-runtime compiler. Reads effector.toml and emits MCP, OpenAI, LangChain, or JSON IR targets from one manifest.</p>
+      </div>
+      <div class="cap-card">
+        <div class="tag tool">Tool</div>
+        <h3>@effectorhq/skill-eval</h3>
+        <p>Quality scorer with 7 metrics: frontmatter, sections, types, descriptions, interface completeness, examples, and composability.</p>
+      </div>
+      <div class="cap-card">
+        <div class="tag infra">Infra</div>
+        <h3>effector-compose</h3>
+        <p>Pipeline builder with static type checking. Connects capabilities by type and verifies compatibility before execution.</p>
+      </div>
+      <div class="cap-card">
+        <div class="tag infra">Infra</div>
+        <h3>effector-graph</h3>
+        <p>Capability dependency graph. Maps type connections across registries for discovery, visualization, and analysis.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     FOR MCP USERS
+═══════════════════════════════════════════════════════ -->
+<section class="mcp-section" id="for-mcp">
+  <div class="container">
+    <div class="section-label">For MCP Users</div>
+    <h2 class="section-title">Add types in 5 minutes. Change nothing.</h2>
+    <p class="section-desc" style="margin-bottom:36px;">
+      Effector is a sidecar — your MCP tool keeps running exactly as before. The manifest adds metadata without changing behavior.
+    </p>
+    <div class="highlight-box">
+      <div>
+        <h3>What you get</h3>
+        <p>Drop an <code>effector.toml</code> next to your MCP tool. That's it. Everything else is additive.</p>
+        <ul class="checklist">
+          <li>Type-safe interfaces (input/output/context)</li>
+          <li>Static composition checking with other tools</li>
+          <li>Security audit via <code>effector-audit</code></li>
+          <li>Automatic discovery by type in registries</li>
+          <li>Cross-runtime portability (MCP, OpenAI, LangChain)</li>
+        </ul>
+      </div>
+      <div class="mcp-code">
+<span style="color:var(--text3)"># Your MCP tool stays the same.</span>
+<span style="color:var(--text3)"># Just add a sidecar manifest:</span>
+
+my-mcp-tool/
+├── index.js          <span style="color:var(--text3)"># unchanged</span>
+├── package.json      <span style="color:var(--text3)"># unchanged</span>
+├── <span style="color:var(--orange)">effector.toml</span>     <span style="color:var(--green)"># ← new</span>
+└── <span style="color:var(--orange)">SKILL.md</span>          <span style="color:var(--green)"># ← new</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     COMPARISON
+═══════════════════════════════════════════════════════ -->
+<section class="comparison" id="comparison">
+  <div class="container">
+    <div class="section-label">Comparison</div>
+    <h2 class="section-title">How effector compares</h2>
+    <p class="section-desc" style="margin-bottom:36px;">
+      Effector isn't a runtime or a framework. It's the type system layer that's been missing.
+    </p>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Raw MCP</th>
+            <th>LangChain</th>
+            <th>CrewAI</th>
+            <th>effector</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Type safety</td>
+            <td>None</td>
+            <td>None</td>
+            <td>None</td>
+            <td>36 standard types</td>
+          </tr>
+          <tr>
+            <td>Composition</td>
+            <td>Manual</td>
+            <td>Runtime only</td>
+            <td>Rigid roles</td>
+            <td>Static verification</td>
+          </tr>
+          <tr>
+            <td>Cross-runtime</td>
+            <td>MCP only</td>
+            <td>Python only</td>
+            <td>Python only</td>
+            <td>MCP, OpenAI, LangChain, JSON IR</td>
+          </tr>
+          <tr>
+            <td>Discovery</td>
+            <td>By name</td>
+            <td>By name</td>
+            <td>By name</td>
+            <td>By input/output type</td>
+          </tr>
+          <tr>
+            <td>Dependencies</td>
+            <td>Varies</td>
+            <td>Heavy</td>
+            <td>Heavy</td>
+            <td>Zero (Node built-ins)</td>
+          </tr>
+          <tr>
+            <td>Permission model</td>
+            <td>None</td>
+            <td>None</td>
+            <td>None</td>
+            <td>Declared + audited</td>
+          </tr>
+          <tr>
+            <td>Your existing tool</td>
+            <td>N/A</td>
+            <td>Rewrite</td>
+            <td>Rewrite</td>
+            <td>Unchanged (sidecar)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     ARCHITECTURE
+═══════════════════════════════════════════════════════ -->
+<section id="architecture">
+  <div class="container">
+    <div class="section-label">Architecture</div>
+    <h2 class="section-title">Clean dependency graph</h2>
+    <p class="section-desc" style="margin-bottom:36px;">
+      A shared kernel at the bottom. Focused tools on top. No circular dependencies, no runtime coupling.
+    </p>
+    <div class="arch-diagram"><span class="layer-label">                          TOOLS                          </span>
+
+   <span class="pkg">skill-lint</span>    <span class="pkg">skill-mcp</span>    <span class="pkg">skill-eval</span>    <span class="pkg">effector-audit</span>
+       <span class="arrow">│</span>             <span class="arrow">│</span>            <span class="arrow">│</span>              <span class="arrow">│</span>
+       <span class="arrow">└─────────────┼────────────┼──────────────┘</span>
+                     <span class="arrow">│</span>            <span class="arrow">│</span>
+                     <span class="arrow">▼</span>            <span class="arrow">▼</span>
+
+<span class="layer-label">                     COMPOSITION LAYER                     </span>
+
+              <span class="pkg">effector-compose</span>    <span class="pkg">effector-graph</span>
+                     <span class="arrow">│</span>                  <span class="arrow">│</span>
+                     <span class="arrow">└──────────┬───────┘</span>
+                                <span class="arrow">│</span>
+
+<span class="layer-label">                        SHARED KERNEL                      </span>
+
+                      <span class="pkg">@effectorhq/core</span>
+            <span class="text3">toml · skill · types · schema · compile</span>
+
+                       <span class="pkg">effector-types</span>
+                 <span class="text3">36 types · input · output · context</span></div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     CTA
+═══════════════════════════════════════════════════════ -->
+<section class="cta-section">
+  <div class="container">
+    <h2>Start building in<br><span class="gradient" style="background:linear-gradient(135deg,var(--red),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">30 seconds</span></h2>
+    <p>Create a typed AI capability, validate it, and compile it to any runtime.</p>
+    <div class="cta-actions">
+      <div class="hero-install" onclick="navigator.clipboard.writeText('npx create-effector my-skill')">
+        <span class="prompt">$</span>
+        <span class="cmd">npx create-effector my-skill</span>
+        <button class="copy-btn" title="Copy">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="5" width="8" height="8" rx="1.5"/><path d="M3 11V3a1 1 0 011-1h8"/></svg>
+        </button>
+      </div>
+      <a href="https://github.com/effectorHQ" class="btn-ghost">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+        View on GitHub
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════ -->
+<footer>
+  <div class="container">
+    <div class="left"><span>effectorHQ</span> &mdash; MIT Licensed &middot; Zero dependencies &middot; Node.js built-ins only</div>
+    <div class="links">
+      <a href="https://github.com/effectorHQ">GitHub</a>
+      <a href="https://github.com/effectorHQ/docs">Docs</a>
+      <a href="https://github.com/effectorHQ/effector-core">Core</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
