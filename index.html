@@ -933,7 +933,7 @@ footer .links a:hover { color: var(--text2); }
 <span class="type">  ✓ Frontmatter complete</span>
 <span class="type">  ✓ All sections present</span>
 
-<span class="prompt">$</span> <span class="fn">npx effector-audit scan .</span>
+<span class="prompt">$</span> <span class="fn">npx @effectorhq/audit scan .</span>
 <span class="type">  ✓ Permissions consistent with context types</span>
 <span class="type">  ✓ No network access without declaration</span>
 <span class="type">  ✓ 0 issues found</span></pre>
@@ -956,9 +956,9 @@ footer .links a:hover { color: var(--text2); }
 
 <span class="comment">// Same manifest → different targets</span>
 <span class="kw">const</span> mcp    = <span class="fn">compile</span>(manifest, <span class="str">'mcp'</span>);
-<span class="kw">const</span> openai = <span class="fn">compile</span>(manifest, <span class="str">'openai'</span>);
+<span class="kw">const</span> openai = <span class="fn">compile</span>(manifest, <span class="str">'openai-agents'</span>);
 <span class="kw">const</span> lang   = <span class="fn">compile</span>(manifest, <span class="str">'langchain'</span>);
-<span class="kw">const</span> ir     = <span class="fn">compile</span>(manifest, <span class="str">'json-ir'</span>);</pre>
+<span class="kw">const</span> ir     = <span class="fn">compile</span>(manifest, <span class="str">'json'</span>);</pre>
         </div>
       </div>
 

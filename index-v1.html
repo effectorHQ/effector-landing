@@ -801,7 +801,7 @@ A | B  iff  output(B) &lt;: output(A)
       <div class="repo-card">
         <div class="repo-card-tier">Security</div>
         <div class="repo-card-name">effector-audit</div>
-        <div class="repo-card-desc">Static security scanner + Sigstore keyless signing. Detects prompt injection, permission drift, data exfiltration, obfuscation.</div>
+        <div class="repo-card-desc">Static security scanner. Detects prompt injection, permission drift, data exfiltration, obfuscation. (Signing/provenance is roadmap for now.)</div>
       </div>
       <div class="repo-card">
         <div class="repo-card-tier">Scaffolding</div>
@@ -1034,7 +1034,7 @@ A | B  iff  output(B) &lt;: output(A)
       </div>
       <div class="finding f-info">
         <div class="sev s-info">Info</div>
-        <div class="f-text"><strong>Package unsigned.</strong> No Sigstore signature found. Run <code>effector-audit sign</code> via GitHub Actions to enable keyless signing with Fulcio + Rekor.</div>
+        <div class="f-text"><strong>Package unsigned.</strong> Signing/provenance is not yet implemented in <code>effector-audit</code> (coming in v0.2).</div>
       </div>
       <div class="finding f-ok">
         <div class="sev s-ok">Pass</div>
