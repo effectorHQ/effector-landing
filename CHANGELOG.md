@@ -16,6 +16,6 @@
 - Font stack: SF Mono → JetBrains Mono
 - All inline color references (72+ occurrences) updated
 - D3 graph legend, node fills, edge colors → brand palette
-- Stats: "66+ types" → "36 types", "9/9 tests" → "242 tests passing"
+- Stats: "66+ types" → "40 types", "9/9 tests" → "242 tests passing"
 - Footer: "OpenClaw runtime · v0.2.0" → "Effector Type System · v0.2.1 · 242 tests passing"
-- Repo card description: "66+ TypeScript types" → "36 standard types"
+- Repo card description: "66+ TypeScript types" → "40 standard types"
