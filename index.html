@@ -11,7 +11,7 @@
 <title>effectorHQ — Next-Gen AI Agent Capabilities</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🦞</text></svg>">
 <style>
 /* ═══════════════════════════════════════════════════════
@@ -45,6 +45,8 @@
 
   --font-mono:   'JetBrains Mono', 'Fira Code', 'SF Mono', monospace;
   --font-sans:   'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  /* Long-form copy: editorial serif; headings/nav stay Inter */
+  --font-body:   'Newsreader', Georgia, 'Times New Roman', serif;
 }
 
 /* ═══════════════════════════════════════════════════════
@@ -64,6 +66,41 @@ body {
   color: var(--text);
   line-height: 1.6;
   overflow-x: hidden;
+}
+
+/* Headings & labels stay Inter; body copy uses Newsreader ~16px */
+h1, h2, h3, h4, h5, h6,
+.section-title,
+.section-label,
+.nav-logo,
+.hero-badge,
+.hero-stat .num,
+.hero-stat .label,
+.step-num,
+.step h3,
+.problem-card h3,
+.mcp-section .highlight-box h3,
+.cta-section h2 {
+  font-family: var(--font-sans);
+}
+
+.hero-sub,
+.section-desc,
+.problem-card p,
+.step p,
+.cap-card p,
+.mcp-section .highlight-box p,
+.mcp-section .checklist li,
+.comparison tbody td,
+.cta-section p,
+footer .left {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.cap-card h3 {
+  font-family: var(--font-mono);
 }
 
 a { color: var(--orange); text-decoration: none; transition: color 0.2s; }
@@ -211,7 +248,7 @@ nav .container {
 }
 
 .hero-sub {
-  font-size: 19px;
+  font-size: 17px;
   color: var(--text2);
   line-height: 1.7;
   max-width: 560px;
@@ -347,7 +384,7 @@ nav .container {
 }
 
 .section-desc {
-  font-size: 17px;
+  font-size: 16px;
   color: var(--text2);
   max-width: 600px;
   line-height: 1.7;
@@ -387,7 +424,7 @@ nav .container {
 }
 
 .problem-card p {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text2);
   line-height: 1.6;
 }
@@ -432,7 +469,7 @@ nav .container {
 }
 
 .step p {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--text2);
   line-height: 1.7;
 }
@@ -528,7 +565,7 @@ nav .container {
 }
 
 .cap-card p {
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text2);
   line-height: 1.6;
 }
@@ -555,7 +592,7 @@ nav .container {
 }
 
 .mcp-section .highlight-box p {
-  font-size: 15px;
+  font-size: 16px;
   color: var(--text2);
   line-height: 1.7;
   margin-bottom: 20px;
@@ -572,7 +609,7 @@ nav .container {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 14px;
+  font-size: 16px;
   color: var(--text2);
 }
 
@@ -606,7 +643,7 @@ nav .container {
 .comparison table {
   width: 100%;
   border-collapse: collapse;
-  font-size: 14px;
+  font-size: 15px;
 }
 
 .comparison thead th {
@@ -695,7 +732,7 @@ nav .container {
 }
 
 .cta-section p {
-  font-size: 17px;
+  font-size: 16px;
   color: var(--text2);
   margin-bottom: 36px;
   max-width: 480px;
@@ -804,7 +841,7 @@ footer .links a:hover { color: var(--text2); }
       <span class="gradient">AI agent capabilities</span>
     </h1>
     <p class="hero-sub">
-      A typed capability layer that makes AI agent tools composable, verifiable, and portable across any runtime.
+      Typed interfaces for agent tools: compose them with static checks, and ship one manifest to MCP, OpenAI Agents, LangChain, or JSON—without locking into a single runtime.
     </p>
     <div class="hero-actions">
       <div class="hero-install" onclick="navigator.clipboard.writeText('npx create-effector my-skill')">
@@ -855,23 +892,23 @@ footer .links a:hover { color: var(--text2); }
     <div class="section-label">The Problem</div>
     <h2 class="section-title">AI tools don't compose</h2>
     <p class="section-desc">
-      Every framework defines capabilities differently. Nothing answers: <em>"Can these two tools actually work together?"</em> until something breaks at runtime.
+      Each stack invents its own notion of a “tool.” Nothing answers <em>“can these two hand off data safely?”</em> until a failure in production does.
     </p>
     <div class="problem-grid">
       <div class="problem-card">
         <div class="icon">&#x1f6ab;</div>
         <h3>No type safety</h3>
-        <p>MCP tools accept and return untyped JSON. A code review tool's output might not match what a reporting tool expects as input. You won't know until it fails.</p>
+        <p>MCP surfaces untyped JSON. One tool’s payload can quietly disagree with the next tool’s expectations—you only learn when something breaks.</p>
       </div>
       <div class="problem-card">
         <div class="icon">&#x1f512;</div>
         <h3>Runtime lock-in</h3>
-        <p>LangChain tools only work in Python. CrewAI tools only work in CrewAI. Your capability definitions are trapped in one ecosystem.</p>
+        <p>Definitions written for one stack rarely travel: LangChain stays in Python, CrewAI in CrewAI. Your interface story rarely survives a move.</p>
       </div>
       <div class="problem-card">
         <div class="icon">&#x1f50d;</div>
         <h3>No composition checking</h3>
-        <p>Wiring tools together is manual and error-prone. There's no way to statically verify that a pipeline of tools will actually pass compatible data.</p>
+        <p>Pipelines are wired by hand. There is no shared check that each hop’s output is a subtype of the next hop’s input.</p>
       </div>
     </div>
   </div>
@@ -885,7 +922,7 @@ footer .links a:hover { color: var(--text2); }
     <div class="section-label">How It Works</div>
     <h2 class="section-title">Declare. Verify. Compile. Compose.</h2>
     <p class="section-desc">
-      Effector is a sidecar manifest. It sits next to your existing tool and adds a typed interface — without changing how your tool runs.
+      Effector is a sidecar: a manifest beside your tool that declares a typed interface—without changing execution semantics.
     </p>
 
     <div class="steps">
@@ -894,7 +931,7 @@ footer .links a:hover { color: var(--text2); }
         <div>
           <div class="step-num">01</div>
           <h3>Declare your interface</h3>
-          <p>Define what your tool accepts, returns, and needs. Choose from 40 standard types across input, output, and context categories. Your tool keeps running exactly as before.</p>
+          <p>Declare inputs, outputs, and context using 40 catalog types. Your implementation stays unchanged; the manifest is additive metadata.</p>
         </div>
         <div class="step-code">
           <div class="step-code-header">
@@ -921,7 +958,7 @@ footer .links a:hover { color: var(--text2); }
         <div>
           <div class="step-num">02</div>
           <h3>Validate and audit</h3>
-          <p>Static analysis catches issues before deployment: malformed manifests, missing permissions, type inconsistencies, and security mismatches between declared context and permissions.</p>
+          <p>Lint and audit before deploy: malformed manifests, missing permissions, type drift, and gaps between declared permissions and what the code actually does.</p>
         </div>
         <div class="step-code">
           <div class="step-code-header">
@@ -945,7 +982,7 @@ footer .links a:hover { color: var(--text2); }
         <div>
           <div class="step-num">03</div>
           <h3>Compile to any runtime</h3>
-          <p>One manifest, every runtime. The compiler emits MCP tool schemas, OpenAI function calls, LangChain tool definitions, or portable JSON IR — from the same source of truth.</p>
+          <p>One manifest, several targets. The compiler emits MCP schemas, OpenAI function payloads, LangChain tool classes, or JSON IR from the same source.</p>
         </div>
         <div class="step-code">
           <div class="step-code-header">
@@ -967,7 +1004,7 @@ footer .links a:hover { color: var(--text2); }
         <div>
           <div class="step-num">04</div>
           <h3>Compose with confidence</h3>
-          <p>The type checker verifies that tool pipelines are compatible before execution. <code>CodeDiff → ReviewReport</code> chains are validated statically. Incompatible connections are caught at build time, not runtime.</p>
+          <p>The checker validates pipelines before they run: <code>CodeDiff → ReviewReport</code> and similar chains are either consistent or rejected at build time.</p>
         </div>
         <div class="step-code">
           <div class="step-code-header">
@@ -996,48 +1033,48 @@ footer .links a:hover { color: var(--text2); }
     <div class="section-label">Ecosystem</div>
     <h2 class="section-title">Everything you need. Nothing you don't.</h2>
     <p class="section-desc">
-      9 focused packages, zero external dependencies, all using Node.js built-ins only.
+      Nine small packages, no third-party runtime dependencies—only Node built-ins.
     </p>
     <div class="cap-grid">
       <div class="cap-card">
         <div class="tag core">Core</div>
         <h3>@effectorhq/core</h3>
-        <p>Shared kernel — TOML parser, SKILL.md parser, type checker, schema validator, compiler. The single source of truth.</p>
+        <p>Kernel: TOML and SKILL parsing, type checking, schema validation, compilation—one place that owns the truth.</p>
       </div>
       <div class="cap-card">
         <div class="tag core">Core</div>
         <h3>effector-types</h3>
-        <p>40 standard types across input, output, and context categories. The type catalog that makes discovery and composition possible.</p>
+        <p>Forty catalog types for inputs, outputs, and context—shared vocabulary for discovery and composition.</p>
       </div>
       <div class="cap-card">
         <div class="tag tool">Tool</div>
         <h3>@effectorhq/skill-lint</h3>
-        <p>Validates SKILL.md structure, frontmatter completeness, and section coverage. Catches manifest issues before they reach production.</p>
+        <p>Checks SKILL.md shape, frontmatter, and required sections—failures surface before publish.</p>
       </div>
       <div class="cap-card">
         <div class="tag tool">Tool</div>
         <h3>effector-audit</h3>
-        <p>Security scanner for capability manifests. Detects permission mismatches, undeclared network access, and context-permission inconsistencies.</p>
+        <p>Static security pass: permission drift, undeclared network or subprocess use, and mismatches against declared context.</p>
       </div>
       <div class="cap-card">
         <div class="tag tool">Tool</div>
         <h3>@effectorhq/skill-mcp</h3>
-        <p>Cross-runtime compiler. Reads effector.toml and emits MCP, OpenAI, LangChain, or JSON IR targets from one manifest.</p>
+        <p>Bridge from manifest to wire format: emits MCP, OpenAI, LangChain, or JSON IR from the same file.</p>
       </div>
       <div class="cap-card">
         <div class="tag tool">Tool</div>
         <h3>@effectorhq/skill-eval</h3>
-        <p>Quality scorer with 7 metrics: frontmatter, sections, types, descriptions, interface completeness, examples, and composability.</p>
+        <p>Static quality score: seven dimensions—frontmatter, sections, types, copy, interface depth, examples, composability.</p>
       </div>
       <div class="cap-card">
         <div class="tag infra">Infra</div>
         <h3>effector-compose</h3>
-        <p>Pipeline builder with static type checking. Connects capabilities by type and verifies compatibility before execution.</p>
+        <p>Build pipelines from typed steps; the checker proves each link is compatible before anything runs.</p>
       </div>
       <div class="cap-card">
         <div class="tag infra">Infra</div>
         <h3>effector-graph</h3>
-        <p>Capability dependency graph. Maps type connections across registries for discovery, visualization, and analysis.</p>
+        <p>Graph view of how types connect across a registry—discovery, layout, and diff-friendly visualization.</p>
       </div>
     </div>
   </div>
@@ -1051,12 +1088,12 @@ footer .links a:hover { color: var(--text2); }
     <div class="section-label">For MCP Users</div>
     <h2 class="section-title">Add types in 5 minutes. Change nothing.</h2>
     <p class="section-desc" style="margin-bottom:36px;">
-      Effector is a sidecar — your MCP tool keeps running exactly as before. The manifest adds metadata without changing behavior.
+      Sidecar only: your MCP server binary is unchanged. The manifest adds types and docs; behavior stays yours.
     </p>
     <div class="highlight-box">
       <div>
         <h3>What you get</h3>
-        <p>Drop an <code>effector.toml</code> next to your MCP tool. That's it. Everything else is additive.</p>
+        <p>Add <code>effector.toml</code> (and usually <code>SKILL.md</code>) beside the tool. Nothing else is mandatory.</p>
         <ul class="checklist">
           <li>Type-safe interfaces (input/output/context)</li>
           <li>Static composition checking with other tools</li>
@@ -1087,7 +1124,7 @@ my-mcp-tool/
     <div class="section-label">Comparison</div>
     <h2 class="section-title">How effector compares</h2>
     <p class="section-desc" style="margin-bottom:36px;">
-      Effector isn't a runtime or a framework. It's the type system layer that's been missing.
+      Not a new runtime: a thin type layer you can adopt where you already ship tools.
     </p>
     <div class="table-wrap">
       <table>
@@ -1164,7 +1201,7 @@ my-mcp-tool/
     <div class="section-label">Architecture</div>
     <h2 class="section-title">Clean dependency graph</h2>
     <p class="section-desc" style="margin-bottom:36px;">
-      A shared kernel at the bottom. Focused tools on top. No circular dependencies, no runtime coupling.
+      Core and catalog at the base; lint, audit, bridges, and graph tooling sit above—acyclic, no runtime entanglement.
     </p>
     <div class="arch-diagram"><span class="layer-label">                          TOOLS                          </span>
 
@@ -1197,7 +1234,7 @@ my-mcp-tool/
 <section class="cta-section">
   <div class="container">
     <h2>Start building in<br><span class="gradient" style="background:linear-gradient(135deg,var(--red),var(--orange));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">30 seconds</span></h2>
-    <p>Create a typed AI capability, validate it, and compile it to any runtime.</p>
+    <p>Scaffold a typed capability, validate it once, compile to whichever target your agents use.</p>
     <div class="cta-actions">
       <div class="hero-install" onclick="navigator.clipboard.writeText('npx create-effector my-skill')">
         <span class="prompt">$</span>
