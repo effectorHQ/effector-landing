@@ -41,3 +41,7 @@ The file is fully self-contained (D3.js loaded from CDN). Drop it anywhere stati
 - [effector-graph](https://github.com/effectorHQ/effector-graph) — Discovery CLI
 - [effector-compose](https://github.com/effectorHQ/effector-compose) — Pipeline engine
 - [effector-audit](https://github.com/effectorHQ/effector-audit) — Security scanner
+
+## License
+
+This project is currently licensed under the Apache 2.0 License 。

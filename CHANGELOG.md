@@ -3,7 +3,7 @@
 ## [Unreleased] — 2026-03-15 (Phase D)
 
 ### Added
-- MIT LICENSE file
+- Apache 2.0 LICENSE file
 - `.gitignore`
 - Google Fonts preconnect (Inter + JetBrains Mono)
 - Favicon (lobster emoji)

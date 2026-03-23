@@ -219,11 +219,17 @@ nav .container {
 
 .hero-badge::before {
   content: '';
-  width: 6px;
-  height: 6px;
-  background: var(--red);
+  width: 9px;
+  height: 9px;
+  background-color: transparent;
+  /* Replace the red dot body with the Brand Kit mark (black bg + red logo). */
+  background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MDAgNTAwIiBmaWxsPSJub25lIj4KICA8IS0tIEJhY2tncm91bmQgLS0+CiAgPHJlY3Qgd2lkdGg9IjUwMCIgaGVpZ2h0PSI1MDAiIHJ4PSI4MCIgZmlsbD0iIzFBMUExQSIvPgoKICA8IS0tCiAgICBlZmZlY3RvckhRIG1hcmsg4oCUIHRocmVlLXByb25nIGNsYXcKICAgIFRocmVlIGZpbGxlZCBwcm9uZ3MgdGFwZXIgdmlhIGN1YmljIGJlemllcnMgdG8gc3ltbWV0cmljIHBvaW50ZWQgdGlwcy4KICAgIENlbnRlciBwcm9uZyBpcyB0YWxsZXN0LiBQYWxtIGlzIGEgdGhpY2sgcm91bmRlZCBiYXIgYXQgYmFzZS4KICAtLT4KCiAgPCEtLSBMZWZ0IHByb25nIOKAlCBjZW50ZXIgeD0xNjAsIDYwcHggd2lkZSwgdGlwIGF0IHk9NzAgLS0+CiAgPHBhdGggZD0iTSAxMzAsMzc1CiAgICAgICAgICAgTCAxMzAsMjI1CiAgICAgICAgICAgQyAxMzAsMTQ1IDE1NSw3NSAxNjAsNzAKICAgICAgICAgICBDIDE2NSw3NSAxOTAsMTQ1IDE5MCwyMjUKICAgICAgICAgICBMIDE5MCwzNzUgWiIKICAgICAgICBmaWxsPSIjRTAzRTNFIi8+CgogIDwhLS0gQ2VudGVyIHByb25nIOKAlCBjZW50ZXIgeD0yNTAsIDYwcHggd2lkZSwgdGlwIGF0IHk9NDAgKHRhbGxlc3QpIC0tPgogIDxwYXRoIGQ9Ik0gMjIwLDM3NQogICAgICAgICAgIEwgMjIwLDIwNQogICAgICAgICAgIEMgMjIwLDExNSAyNDUsNDUgMjUwLDQwCiAgICAgICAgICAgQyAyNTUsNDUgMjgwLDExNSAyODAsMjA1CiAgICAgICAgICAgTCAyODAsMzc1IFoiCiAgICAgICAgZmlsbD0iI0UwM0UzRSIvPgoKICA8IS0tIFJpZ2h0IHByb25nIOKAlCBjZW50ZXIgeD0zNDAsIDYwcHggd2lkZSwgdGlwIGF0IHk9NzAgLS0+CiAgPHBhdGggZD0iTSAzMTAsMzc1CiAgICAgICAgICAgTCAzMTAsMjI1CiAgICAgICAgICAgQyAzMTAsMTQ1IDMzNSw3NSAzNDAsNzAKICAgICAgICAgICBDIDM0NSw3NSAzNzAsMTQ1IDM3MCwyMjUKICAgICAgICAgICBMIDM3MCwzNzUgWiIKICAgICAgICBmaWxsPSIjRTAzRTNFIi8+CgogIDwhLS0gUGFsbSBiYXIgLS0+CiAgPHJlY3QgeD0iODAiIHk9IjM2MiIgd2lkdGg9IjM0MCIgaGVpZ2h0PSI2OCIgcng9IjM0IiBmaWxsPSIjRTAzRTNFIi8+Cjwvc3ZnPgo=");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  background-position: center;
   border-radius: 50%;
   animation: pulse 2s ease-in-out infinite;
+  overflow: hidden;
 }
 
 @keyframes pulse {
@@ -1256,7 +1262,7 @@ my-mcp-tool/
 ═══════════════════════════════════════════════════════ -->
 <footer>
   <div class="container">
-    <div class="left"><span>effectorHQ</span> &mdash; MIT Licensed &middot; Zero dependencies &middot; Node.js built-ins only</div>
+    <div class="left"><span>effectorHQ</span> &mdash; Apache License 2.0d &middot; Zero dependencies &middot; Node.js built-ins only</div>
     <div class="links">
       <a href="https://github.com/effectorHQ">GitHub</a>
       <a href="https://github.com/effectorHQ/docs">Docs</a>

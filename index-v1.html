@@ -19,18 +19,18 @@
    DESIGN TOKENS
 ═══════════════════════════════════════════════════════ */
 :root {
-  --bg:          #1A1A1A;
+  --bg:          #0F0F0F;
   --surface:     #2A2A2A;
   --surface2:    #2A2A2A;
   --surface3:    #333333;
   --border:      #3D3D3D;
   --border2:     #3D3D3D;
 
-  --violet:      #E03E3E;
-  --violet-dim:  rgba(224,62,62,0.12);
-  --violet-glow: rgba(224,62,62,0.25);
-  --teal:        #F27A3A;
-  --teal-dim:    rgba(242,122,58,0.1);
+  --red:      #E03E3E;
+  --red-dim:  rgba(224,62,62,0.12);
+  --red-glow: rgba(224,62,62,0.25);
+  --orange:        #F27A3A;
+  --orange-dim:    rgba(242,122,58,0.1);
   --amber:       #fbbf24;
   --amber-dim:   rgba(251,191,36,0.1);
   --rose:        #f87171;
@@ -81,11 +81,11 @@ nav {
 }
 .nav-logo .logo-mark {
   width: 28px; height: 28px; border-radius: 7px;
-  background: linear-gradient(135deg, var(--violet), var(--teal));
+  background: linear-gradient(135deg, var(--red), var(--orange));
   display: flex; align-items: center; justify-content: center;
   font-size: 0.75rem; font-weight: 900; color: white;
 }
-.nav-logo span { color: var(--violet); }
+.nav-logo span { color: var(--red); }
 .nav-links { display: flex; gap: 0.25rem; }
 .nav-link {
   padding: 0.4rem 0.85rem; border-radius: 6px; font-size: 0.85rem;
@@ -93,10 +93,10 @@ nav {
   transition: all 0.15s;
 }
 .nav-link:hover { color: var(--text); background: var(--surface2); }
-.nav-link.active { color: var(--violet); background: var(--violet-dim); }
+.nav-link.active { color: var(--red); background: var(--red-dim); }
 .nav-cta {
   padding: 0.45rem 1.1rem; border-radius: 7px; font-size: 0.82rem;
-  font-weight: 600; background: var(--violet); color: white;
+  font-weight: 600; background: var(--red); color: white;
   border: none; transition: opacity 0.15s;
 }
 .nav-cta:hover { opacity: 0.85; }
@@ -127,8 +127,8 @@ nav {
 .hero-eyebrow {
   display: inline-flex; align-items: center; gap: 0.5rem;
   padding: 0.35rem 0.9rem; border-radius: 99px;
-  background: var(--violet-dim); border: 1px solid rgba(224,62,62,0.3);
-  font-size: 0.75rem; font-weight: 600; color: var(--violet);
+  background: var(--red-dim); border: 1px solid rgba(224,62,62,0.3);
+  font-size: 0.75rem; font-weight: 600; color: var(--red);
   letter-spacing: 0.3px; margin-bottom: 1.5rem;
 }
 .hero-eyebrow span { color: var(--text2); }
@@ -141,7 +141,7 @@ nav {
 }
 .hero h1 em {
   font-style: normal;
-  background: linear-gradient(135deg, var(--violet) 0%, var(--teal) 100%);
+  background: linear-gradient(135deg, var(--red) 0%, var(--orange) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -155,7 +155,7 @@ nav {
 .btn-primary {
   display: inline-flex; align-items: center; gap: 0.5rem;
   padding: 0.75rem 1.6rem; border-radius: 9px;
-  background: var(--violet); color: white;
+  background: var(--red); color: white;
   font-size: 0.9rem; font-weight: 700; border: none;
   transition: all 0.15s; box-shadow: 0 4px 20px rgba(224,62,62,0.35);
 }
@@ -180,8 +180,8 @@ nav {
   background: linear-gradient(135deg, var(--text) 0%, var(--text2) 100%);
   -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
 }
-.stat-num.violet { background: linear-gradient(135deg, var(--violet), #F27A3A); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.stat-num.teal { background: linear-gradient(135deg, var(--teal), #67e8f9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-num.violet { background: linear-gradient(135deg, var(--red), #F27A3A); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.stat-num.teal { background: linear-gradient(135deg, var(--orange), #67e8f9); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
 .stat-label { font-size: 0.78rem; color: var(--text3); margin-top: 0.2rem; font-weight: 500; }
 
 /* Code snippet hero */
@@ -212,7 +212,7 @@ pre {
   overflow-x: auto;
 }
 .ck { color: #F27A3A; } /* keyword */
-.cv { color: var(--teal); } /* value */
+.cv { color: var(--orange); } /* value */
 .cs { color: var(--amber); } /* string */
 .cc { color: var(--text3); } /* comment */
 .ce { color: #F27A3A; }  /* emphasis */
@@ -223,7 +223,7 @@ pre {
 .section { padding: 5rem 0; }
 .section-label {
   font-size: 0.72rem; font-weight: 700; letter-spacing: 1.5px;
-  text-transform: uppercase; color: var(--violet);
+  text-transform: uppercase; color: var(--red);
   margin-bottom: 0.75rem;
 }
 .section-title {
@@ -248,7 +248,7 @@ pre {
   transition: background 0.15s;
 }
 .paradigm-cell:hover { background: var(--surface2); }
-.paradigm-cell.highlight { background: var(--violet-dim); }
+.paradigm-cell.highlight { background: var(--red-dim); }
 .paradigm-cell.highlight:hover { background: rgba(224,62,62,0.16); }
 .paradigm-era {
   font-size: 0.72rem; font-weight: 700; letter-spacing: 0.5px;
@@ -257,10 +257,10 @@ pre {
 .paradigm-unit {
   font-size: 1rem; font-weight: 700; margin-bottom: 0.3rem; font-family: var(--font-mono);
 }
-.paradigm-cell.highlight .paradigm-unit { color: var(--violet); }
+.paradigm-cell.highlight .paradigm-unit { color: var(--red); }
 .paradigm-types { font-size: 0.78rem; color: var(--text2); margin-bottom: 0.3rem; }
 .paradigm-disc { font-size: 0.78rem; color: var(--text3); }
-.paradigm-cell.highlight .paradigm-disc { color: var(--teal); font-weight: 600; }
+.paradigm-cell.highlight .paradigm-disc { color: var(--orange); font-weight: 600; }
 
 /* ═══════════════════════════════════════════════════════
    THREE PRIMITIVES
@@ -275,17 +275,17 @@ pre {
   overflow: hidden;
   transition: border-color 0.2s, transform 0.2s;
 }
-.primitive-card:hover { border-color: var(--violet); transform: translateY(-2px); }
+.primitive-card:hover { border-color: var(--red); transform: translateY(-2px); }
 .primitive-card::before {
   content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
 }
-.primitive-card:nth-child(1)::before { background: linear-gradient(90deg, var(--violet), transparent); }
-.primitive-card:nth-child(2)::before { background: linear-gradient(90deg, var(--teal), transparent); }
+.primitive-card:nth-child(1)::before { background: linear-gradient(90deg, var(--red), transparent); }
+.primitive-card:nth-child(2)::before { background: linear-gradient(90deg, var(--orange), transparent); }
 .primitive-card:nth-child(3)::before { background: linear-gradient(90deg, var(--amber), transparent); }
 .primitive-icon { font-size: 1.8rem; margin-bottom: 1rem; }
 .primitive-name { font-size: 1rem; font-weight: 800; margin-bottom: 0.4rem; }
-.primitive-card:nth-child(1) .primitive-name { color: var(--violet); }
-.primitive-card:nth-child(2) .primitive-name { color: var(--teal); }
+.primitive-card:nth-child(1) .primitive-name { color: var(--red); }
+.primitive-card:nth-child(2) .primitive-name { color: var(--orange); }
 .primitive-card:nth-child(3) .primitive-name { color: var(--amber); }
 .primitive-desc { font-size: 0.85rem; color: var(--text2); line-height: 1.65; margin-bottom: 1rem; }
 .primitive-example {
@@ -308,7 +308,7 @@ pre {
   border: 1px solid var(--border2); background: var(--surface2);
   color: var(--text2); transition: all 0.15s;
 }
-.filter-btn:hover, .filter-btn.active { border-color: var(--violet); color: var(--violet); background: var(--violet-dim); }
+.filter-btn:hover, .filter-btn.active { border-color: var(--red); color: var(--red); background: var(--red-dim); }
 #graph-svg {
   width: 100%; height: 580px;
   background: var(--surface);
@@ -332,9 +332,9 @@ pre {
   box-shadow: 0 8px 24px rgba(0,0,0,0.4);
   z-index: 999; display: none;
 }
-#g-tooltip .tt-name { font-weight: 700; color: var(--violet); font-family: var(--font-mono); margin-bottom: 0.25rem; }
+#g-tooltip .tt-name { font-weight: 700; color: var(--red); font-family: var(--font-mono); margin-bottom: 0.25rem; }
 #g-tooltip .tt-desc { color: var(--text2); line-height: 1.5; }
-#g-tooltip .tt-freq { color: var(--teal); font-size: 0.72rem; margin-top: 0.3rem; }
+#g-tooltip .tt-freq { color: var(--orange); font-size: 0.72rem; margin-top: 0.3rem; }
 
 /* ═══════════════════════════════════════════════════════
    DISCOVERY PANEL
@@ -350,10 +350,10 @@ pre {
   border-radius: 7px; color: var(--text); font-size: 0.84rem;
   appearance: none; transition: border-color 0.15s;
 }
-.field select:focus { outline: none; border-color: var(--violet); }
+.field select:focus { outline: none; border-color: var(--red); }
 .search-exec {
   width: 100%; padding: 0.7rem; margin-top: 0.5rem;
-  background: linear-gradient(135deg, var(--violet), #7c3aed);
+  background: linear-gradient(135deg, var(--red), #7c3aed);
   color: white; border: none; border-radius: 8px;
   font-size: 0.88rem; font-weight: 700;
   transition: opacity 0.15s; box-shadow: 0 4px 14px rgba(224,62,62,0.3);
@@ -365,16 +365,16 @@ pre {
   padding: 0.7rem 0.9rem; font-family: var(--font-mono);
   font-size: 0.7rem; color: var(--text3); line-height: 1.5; word-break: break-all;
 }
-.cli-preview span { color: var(--teal); }
+.cli-preview span { color: var(--orange); }
 .results-header { font-size: 0.78rem; color: var(--text3); margin-bottom: 0.9rem; }
 .result-card {
   background: var(--surface); border: 1px solid var(--border2);
   border-radius: var(--radius); padding: 1.2rem 1.4rem;
   margin-bottom: 0.75rem; transition: border-color 0.15s, transform 0.15s;
 }
-.result-card:hover { border-color: var(--violet); transform: translateX(2px); }
+.result-card:hover { border-color: var(--red); transform: translateX(2px); }
 .result-card.exact { border-left: 3px solid var(--green); }
-.result-card.structural { border-left: 3px solid var(--teal); }
+.result-card.structural { border-left: 3px solid var(--orange); }
 .rc-head { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.6rem; }
 .rc-name { font-weight: 800; font-size: 0.92rem; font-family: var(--font-mono); }
 .rc-ver { font-size: 0.72rem; color: var(--text3); }
@@ -383,23 +383,23 @@ pre {
   padding: 0.15rem 0.55rem; border-radius: 99px; text-transform: uppercase; letter-spacing: 0.3px;
 }
 .tp-verified { background: var(--green-dim); color: var(--green); }
-.tp-signed { background: var(--teal-dim); color: var(--teal); }
+.tp-signed { background: var(--orange-dim); color: var(--orange); }
 .tp-community { background: var(--amber-dim); color: var(--amber); }
 .rc-chips { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.6rem; }
 .chip {
   font-size: 0.7rem; padding: 0.18rem 0.55rem;
   border-radius: 99px; font-family: var(--font-mono);
 }
-.chip-i { background: var(--violet-dim); color: var(--violet); }
-.chip-o { background: var(--teal-dim); color: var(--teal); }
+.chip-i { background: var(--red-dim); color: var(--red); }
+.chip-o { background: var(--orange-dim); color: var(--orange); }
 .chip-c { background: var(--amber-dim); color: var(--amber); }
-.rc-sub { font-size: 0.72rem; color: var(--teal); margin-bottom: 0.4rem; }
+.rc-sub { font-size: 0.72rem; color: var(--orange); margin-bottom: 0.4rem; }
 .rc-bar { display: flex; align-items: center; gap: 0.7rem; }
 .rc-track { flex: 1; height: 3px; background: var(--surface2); border-radius: 99px; overflow: hidden; }
-.rc-fill { height: 100%; border-radius: 99px; background: linear-gradient(to right, var(--violet), var(--teal)); }
+.rc-fill { height: 100%; border-radius: 99px; background: linear-gradient(to right, var(--red), var(--orange)); }
 .rc-meta { font-size: 0.7rem; color: var(--text3); }
 .no-results { text-align: center; padding: 3rem; color: var(--text3); }
-.no-results .gap-cta { font-size: 0.8rem; color: var(--violet); margin-top: 0.5rem; }
+.no-results .gap-cta { font-size: 0.8rem; color: var(--red); margin-top: 0.5rem; }
 
 /* ═══════════════════════════════════════════════════════
    COMPOSITION PANEL
@@ -415,7 +415,7 @@ pre {
   border-radius: 8px; padding: 0.65rem 0.9rem;
   position: relative; min-width: 120px; transition: border-color 0.15s;
 }
-.step-node:hover { border-color: var(--violet); }
+.step-node:hover { border-color: var(--red); }
 .step-node.tc-err { border-color: var(--rose); background: rgba(248,113,113,0.06); }
 .sn-name { font-size: 0.78rem; font-weight: 700; font-family: var(--font-mono); margin-bottom: 0.25rem; }
 .sn-types { font-size: 0.67rem; color: var(--text3); font-family: var(--font-mono); }
@@ -427,7 +427,7 @@ pre {
 }
 .sn-rm:hover { background: var(--rose); color: white; border-color: var(--rose); }
 .pipe-op { font-size: 1rem; color: var(--text3); }
-.pipe-op.ok { color: var(--violet); }
+.pipe-op.ok { color: var(--red); }
 .pipe-op.err { color: var(--rose); }
 .tc-output { margin-top: 1.2rem; border-radius: var(--radius-sm); padding: 1.1rem 1.3rem; font-size: 0.8rem; }
 .tc-ok-box { background: var(--green-dim); border: 1px solid rgba(74,222,128,0.2); }
@@ -449,7 +449,7 @@ pre {
   border: 1px solid transparent;
 }
 .palette-item:hover { background: var(--surface2); border-color: var(--border2); }
-.pi-name { font-size: 0.8rem; font-weight: 700; font-family: var(--font-mono); color: var(--violet); }
+.pi-name { font-size: 0.8rem; font-weight: 700; font-family: var(--font-mono); color: var(--red); }
 .pi-types { font-size: 0.67rem; color: var(--text3); font-family: var(--font-mono); }
 .palette-divider { border: none; border-top: 1px solid var(--border); margin: 0.75rem 0; }
 .op-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; margin-top: 0.75rem; }
@@ -458,7 +458,7 @@ pre {
   background: var(--surface2); font-size: 0.82rem; color: var(--text2); transition: all 0.15s;
   display: flex; flex-direction: column; align-items: center; gap: 0.15rem;
 }
-.op-btn:hover { border-color: var(--violet); color: var(--violet); background: var(--violet-dim); }
+.op-btn:hover { border-color: var(--red); color: var(--red); background: var(--red-dim); }
 .op-sym { font-size: 1.1rem; }
 .op-label { font-size: 0.62rem; color: var(--text3); }
 
@@ -481,7 +481,7 @@ pre {
 }
 .f-critical { background: rgba(248,113,113,0.08); border: 1px solid rgba(248,113,113,0.2); }
 .f-high { background: rgba(251,191,36,0.06); border: 1px solid rgba(251,191,36,0.18); }
-.f-info { background: var(--teal-dim); border: 1px solid rgba(242,122,58,0.2); }
+.f-info { background: var(--orange-dim); border: 1px solid rgba(242,122,58,0.2); }
 .f-ok { background: var(--green-dim); border: 1px solid rgba(74,222,128,0.2); }
 .sev {
   font-size: 0.65rem; font-weight: 800; padding: 0.2rem 0.55rem;
@@ -490,18 +490,18 @@ pre {
 }
 .s-crit { background: var(--rose); color: #1a0000; }
 .s-high { background: var(--amber); color: #1a1000; }
-.s-info { background: var(--teal); color: #001a18; }
+.s-info { background: var(--orange); color: #001a18; }
 .s-ok { background: var(--green); color: #001200; }
 .f-text { font-size: 0.8rem; line-height: 1.6; color: var(--text2); }
 .f-text strong { color: var(--text); }
-.f-text code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--violet); }
+.f-text code { font-family: var(--font-mono); font-size: 0.72rem; color: var(--red); }
 
 /* perm-type box */
 .perm-type-box {
-  background: var(--violet-dim); border: 1px solid rgba(224,62,62,0.25);
+  background: var(--red-dim); border: 1px solid rgba(224,62,62,0.25);
   border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1.5rem;
 }
-.perm-type-box h3 { font-size: 0.9rem; font-weight: 800; color: var(--violet); margin-bottom: 0.6rem; }
+.perm-type-box h3 { font-size: 0.9rem; font-weight: 800; color: var(--red); margin-bottom: 0.6rem; }
 .perm-type-box p { font-size: 0.84rem; color: var(--text2); line-height: 1.65; margin-bottom: 1rem; }
 .rule-list { list-style: none; }
 .rule-list li {
@@ -509,7 +509,7 @@ pre {
   padding: 0.3rem 0; line-height: 1.5;
   display: flex; gap: 0.75rem;
 }
-.rule-list li::before { content: '→'; color: var(--violet); }
+.rule-list li::before { content: '→'; color: var(--red); }
 
 /* ═══════════════════════════════════════════════════════
    CLAWHUB DATA PANEL
@@ -520,7 +520,7 @@ pre {
   border-radius: var(--radius); padding: 1.5rem; margin-bottom: 1.5rem;
   display: flex; gap: 2rem; align-items: center;
 }
-.data-intro-num { font-size: 3rem; font-weight: 900; color: var(--violet); letter-spacing: -2px; }
+.data-intro-num { font-size: 3rem; font-weight: 900; color: var(--red); letter-spacing: -2px; }
 .data-intro-text { font-size: 0.88rem; color: var(--text2); line-height: 1.65; }
 .data-intro-text strong { color: var(--text); }
 .charts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
@@ -544,7 +544,7 @@ pre {
   padding: 0.9rem 1rem; margin-top: 1rem;
   font-size: 0.78rem; color: var(--text2); line-height: 1.6;
 }
-.insight strong { color: var(--teal); }
+.insight strong { color: var(--orange); }
 
 /* ═══════════════════════════════════════════════════════
    REPOS SECTION (in overview)
@@ -555,9 +555,9 @@ pre {
   border-radius: var(--radius); padding: 1.3rem;
   transition: border-color 0.15s, transform 0.15s; cursor: pointer;
 }
-.repo-card:hover { border-color: var(--violet); transform: translateY(-2px); }
+.repo-card:hover { border-color: var(--red); transform: translateY(-2px); }
 .repo-card-tier { font-size: 0.65rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text3); margin-bottom: 0.5rem; }
-.repo-card-name { font-family: var(--font-mono); font-size: 0.88rem; font-weight: 700; color: var(--violet); margin-bottom: 0.4rem; }
+.repo-card-name { font-family: var(--font-mono); font-size: 0.88rem; font-weight: 700; color: var(--red); margin-bottom: 0.4rem; }
 .repo-card-desc { font-size: 0.78rem; color: var(--text2); line-height: 1.5; }
 .repo-tier-label {
   font-size: 0.7rem; font-weight: 700; text-transform: uppercase;
@@ -576,7 +576,7 @@ footer {
   flex-wrap: wrap; gap: 1rem;
 }
 .footer-brand { font-size: 0.9rem; font-weight: 700; }
-.footer-brand span { color: var(--violet); }
+.footer-brand span { color: var(--red); }
 .footer-links { display: flex; gap: 1.5rem; }
 .footer-link { font-size: 0.8rem; color: var(--text3); transition: color 0.15s; }
 .footer-link:hover { color: var(--text); }
@@ -739,7 +739,7 @@ footer {
         <div class="primitive-icon">🔤</div>
         <div class="primitive-name">Type Language</div>
         <div class="primitive-desc">
-          Every Effector declares its interface: <code style="font-family:var(--font-mono);color:var(--violet);font-size:0.8em">input</code>, <code style="font-family:var(--font-mono);color:var(--violet);font-size:0.8em">output</code>, <code style="font-family:var(--font-mono);color:var(--violet);font-size:0.8em">context</code>. Structural subtyping means <code style="font-family:var(--font-mono);color:var(--violet);font-size:0.8em">SecurityReport</code> is automatically compatible anywhere a <code style="font-family:var(--font-mono);color:var(--violet);font-size:0.8em">ReviewReport</code> is expected — no explicit declaration needed.
+          Every Effector declares its interface: <code style="font-family:var(--font-mono);color:var(--red);font-size:0.8em">input</code>, <code style="font-family:var(--font-mono);color:var(--red);font-size:0.8em">output</code>, <code style="font-family:var(--font-mono);color:var(--red);font-size:0.8em">context</code>. Structural subtyping means <code style="font-family:var(--font-mono);color:var(--red);font-size:0.8em">SecurityReport</code> is automatically compatible anywhere a <code style="font-family:var(--font-mono);color:var(--red);font-size:0.8em">ReviewReport</code> is expected — no explicit declaration needed.
         </div>
         <div class="primitive-example">input   = "CodeDiff"
 output  = "SecurityReport"
@@ -863,7 +863,7 @@ A | B  iff  output(B) &lt;: output(A)
       </div>
     </div>
     <div class="graph-note">
-      <strong>Reading the graph:</strong> an arrow <code style="font-family:var(--font-mono);color:var(--violet);font-size:0.78em">A → B</code> means at least one Effector accepts type A and produces type B. Dashed edges are structural subtype relationships (<code style="font-family:var(--font-mono);color:var(--teal);font-size:0.78em">SecurityReport ⊆ ReviewReport</code> — every SecurityReport satisfies the ReviewReport interface). The type checker exploits these relationships: querying for ReviewReport returns SecurityReport-producing skills too.
+      <strong>Reading the graph:</strong> an arrow <code style="font-family:var(--font-mono);color:var(--red);font-size:0.78em">A → B</code> means at least one Effector accepts type A and produces type B. Dashed edges are structural subtype relationships (<code style="font-family:var(--font-mono);color:var(--orange);font-size:0.78em">SecurityReport ⊆ ReviewReport</code> — every SecurityReport satisfies the ReviewReport interface). The type checker exploits these relationships: querying for ReviewReport returns SecurityReport-producing skills too.
     </div>
   </div>
 </div>
@@ -980,10 +980,10 @@ A | B  iff  output(B) &lt;: output(A)
       <h3>Permissions Are Types</h3>
       <p>An Effector declaring <code style="font-family:var(--font-mono);font-size:0.82em">input: CodeDiff, output: SecurityReport</code> has no legitimate reason to declare <code style="font-family:var(--font-mono);font-size:0.82em">filesystem: ["write"]</code>. That mismatch is a security type error — detectable before execution.</p>
       <ul class="rule-list">
-        <li><code style="font-family:var(--font-mono);font-size:0.8em;color:var(--text2)">output: Markdown, PlainText</code> → expect <code style="font-family:var(--font-mono);font-size:0.8em;color:var(--violet)">network = false</code></li>
-        <li><code style="font-family:var(--font-mono);font-size:0.8em;color:var(--text2)">input: RepositoryRef</code> → expect <code style="font-family:var(--font-mono);font-size:0.8em;color:var(--violet)">env-read includes *TOKEN*</code></li>
-        <li><code style="font-family:var(--font-mono);font-size:0.8em;color:var(--text2)">context: [Docker]</code> → expect <code style="font-family:var(--font-mono);font-size:0.8em;color:var(--violet)">subprocess = true</code></li>
-        <li><code style="font-family:var(--font-mono);font-size:0.8em;color:var(--text2)">output: Notification</code> → expect <code style="font-family:var(--font-mono);font-size:0.8em;color:var(--violet)">network = true</code></li>
+        <li><code style="font-family:var(--font-mono);font-size:0.8em;color:var(--text2)">output: Markdown, PlainText</code> → expect <code style="font-family:var(--font-mono);font-size:0.8em;color:var(--red)">network = false</code></li>
+        <li><code style="font-family:var(--font-mono);font-size:0.8em;color:var(--text2)">input: RepositoryRef</code> → expect <code style="font-family:var(--font-mono);font-size:0.8em;color:var(--red)">env-read includes *TOKEN*</code></li>
+        <li><code style="font-family:var(--font-mono);font-size:0.8em;color:var(--text2)">context: [Docker]</code> → expect <code style="font-family:var(--font-mono);font-size:0.8em;color:var(--red)">subprocess = true</code></li>
+        <li><code style="font-family:var(--font-mono);font-size:0.8em;color:var(--text2)">output: Notification</code> → expect <code style="font-family:var(--font-mono);font-size:0.8em;color:var(--red)">network = true</code></li>
       </ul>
     </div>
 
@@ -1384,7 +1384,7 @@ function renderPipe() {
   const errs = [];
   for (let i=0; i<pipe.length-1; i++) {
     if (!isSub(pipe[i].output, pipe[i+1].input)) {
-      errs.push({ at:i, msg:`<code>${pipe[i].output}</code> is not assignable to <code style="color:var(--teal)">${pipe[i+1].input}</code> — ${pipe[i].name} → ${pipe[i+1].name} is invalid` });
+      errs.push({ at:i, msg:`<code>${pipe[i].output}</code> is not assignable to <code style="color:var(--orange)">${pipe[i+1].input}</code> — ${pipe[i].name} → ${pipe[i+1].name} is invalid` });
     }
   }
 
